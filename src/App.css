@@ -1,0 +1,114 @@
+.App {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  margin: 1rem 0;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #4338ca;
+}
+
+.game-over {
+  color: green;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Desktop default */
+  gap: 1rem;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* makes square */
+  font-size: 2rem;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card .front {
+  background-color: #e0e7ff;
+  transform: rotateY(180deg);
+}
+
+.card .back {
+  background-color: #c7d2fe;
+  transform: rotateY(0deg);
+}
+
+.card.flipped .front {
+  transform: rotateY(0deg);
+}
+
+.card.flipped .back {
+  transform: rotateY(180deg);
+}
+
+/* Tablet view: 3 cards/row */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 360px;
+  }
+}
+
+/* Mobile view: still 3 cards/row, but smaller font and padding */
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 300px;
+    gap: 0.7rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .card {
+    font-size: 1.4rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
